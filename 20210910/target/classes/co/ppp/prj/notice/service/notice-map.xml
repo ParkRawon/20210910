@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.ppp.prj.notice.service.NoticeMapper">  <!-- 인터페이스명 써주기 -->
 	<select id="noticeSelectList"  resultType="co.ppp.prj.notice.vo.NoticeVO">
-		
+		select * from notice
 	</select>
 	
 	<select id="noticeSelect" resultType="co.ppp.prj.notice.vo.NoticeVO">
