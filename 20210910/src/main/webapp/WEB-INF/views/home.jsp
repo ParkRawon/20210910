@@ -9,8 +9,9 @@
 <body>
 	<div align="center">
 		<div><h1>welcome</h1></div>
-		<h3><a href="memberList.do">회원목록보기</a></h3>
 		<h3><a href="loginForm.do">Login</a></h3>
+		<h3><a href="JoinForm.do">Join</a></h3>
+		<h3><a href="memberList.do">회원목록보기</a></h3>
 		<h3><a href="noticeList.do">게시판목록보기</h3>
 	</div>
 </body>

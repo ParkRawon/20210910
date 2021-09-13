@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+		<!-- 전체 레이아웃 -->  <!-- 미리설계하고 layout을 만든다 -->
+	 <definition name="layout" template="/WEB-INF/views/tiles/layout.jsp">   
+	 	<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+	 	<put-attribute name="body" value="" />
+	 	<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />  
+	 </definition>    
+	 
+	 	<!-- body를 설정해준다 --> 
+	 <definition name="*/*" extends="layout">
+	 	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	 </definition>
+	 
+	 <definition name="*/*/*" extends="layout">
+	 	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	 </definition>
+	 
+	 	<!-- tiles 안태울때 -->
+	 <definition name="notiles" template="/WEB-INF/views/tiles/notiles.jsp">
+	 	<put-attribute name="body" value="" />
+	 </definition>
+	 
+	 <definition name="notiles/*" extends="notiles">
+	 	<put-attribute name="body" value="/WEB-INF/views/notiles/{1}.jsp" />
+	 </definition>
+</tiles-definitions>

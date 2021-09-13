@@ -1,20 +1,24 @@
 package co.ppp.prj.member.web;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.servlet.ModelAndView;
 
 import co.ppp.prj.member.service.MemberService;
 import co.ppp.prj.member.vo.MemberVO;
+
 
 @Controller
 public class MemberController {
 	@Autowired  //IoC에 있는 것을 찾아 자동으로 주입해주세요
 	private MemberService memberDao;   //의존성 주입(DI) 
+	
 	
 	@RequestMapping("/memberList.do")    //회원 목록
 	public String memberList(Model model) {
@@ -24,8 +28,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/memberSelect.do")  //회원 한명씩보기
-	public String memberSelect(Model model, MemberVO vo) {	
-		vo.setId("micol");//강제로 주입			
+	public String memberSelect(MemberVO vo, Model model) {	
 		model.addAttribute("member", memberDao.memberSelect(vo));  //의존성 주입 
 		
 		return "member/memberSelect";
@@ -55,6 +58,41 @@ public class MemberController {
 			views = "member/loginFail";
 		}
 		return views;
+	}
+	
+	@RequestMapping("/JoinForm.do")  
+	String JoinForm() {  
+		
+		return "member/JoinForm";
+	}
+	
+//	@PostMapping("/memberJoin.do")    //회원가입
+//	String memberJoin(MemberVO vo, Model model) {
+//		int n = memberDao.memberInsert(vo);
+//		String view = null;
+//		
+//		if(n != 0) {
+//			view = "redirect:memberList.do";
+//		}else {
+//			model.addAttribute("message", "회원가입 실패");
+//			view = "member/joinFail";
+//		}
+//		
+//		return view;
+//	}
+	
+	@PostMapping("/memberJoin.do")
+	ModelAndView memberJoin(MemberVO vo, ModelAndView mv) {
+		int n = memberDao.memberInsert(vo);
+		
+		if(n != 0) {
+			mv.setViewName("redirect:memberList.do");
+		}else {
+			mv.addObject("message", "회원가입 실패");
+			mv.setViewName("member/joinFail");
+		}
+		
+		return mv;
 	}
 	
 	

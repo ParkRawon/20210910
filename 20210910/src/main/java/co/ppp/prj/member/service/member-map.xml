@@ -14,7 +14,8 @@
 	</select>
 	
 	<insert id="memberInsert" parameterType="co.ppp.prj.member.vo.MemberVO">
-		insert into member values(#{id}, #{password}, #{name}, #{address})
+		insert into member(id, password, name, address) 
+		values(#{id}, #{password}, #{name}, #{address})
 	</insert>
 	
 	<delete id="memberDelete" parameterType="co.ppp.prj.member.vo.MemberVO">

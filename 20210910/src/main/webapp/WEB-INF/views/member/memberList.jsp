@@ -10,6 +10,12 @@
 <title>회원목록</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script type="text/javascript">
+	function CallMember(str){
+		frm.id.value = str;
+		frm.submit();
+	}
+</script>
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -25,7 +31,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 					<th>Address</th>
 				</tr>
 				<c:forEach var="member" items="${members }">
-				<tr onclick="location.href='memberSelect.do'">						
+				<tr onclick="CallMember('${member.id}')">						
 					<td>${member.id }</td>
 					<td>${member.name }</td>
 					<td>${member.address }</td>
@@ -34,8 +40,11 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 			</table>
 		</div><br/>
 		<div>
-			<form id="frm" name="frm" action="" method="post">
-				<input type="button" onclick="location.href='home.do'" value="HOME"> 
+			<button type="button" onclick="location.href='home.do'">홈가기</button>
+		</div>
+		<div>
+			<form id="frm" name="frm" action="memberSelect.do" method="post">
+				<input type="hidden" id="id" name="id">
 			</form>
 		</div>
 	</div>

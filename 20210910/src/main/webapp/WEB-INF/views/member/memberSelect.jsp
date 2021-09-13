@@ -26,6 +26,11 @@
 					<td colspan="7">${member.address }</td>
 				</tr>
 			</table>
+		</div><br/>
+		<div>
+			<form id="frm" action="" method="post">
+				<input type="hidden" id="id" name="id" value="${member.id }">
+			</form>
 		</div>
 	</div>
 </body>

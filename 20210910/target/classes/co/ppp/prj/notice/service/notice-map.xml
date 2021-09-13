@@ -2,22 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.ppp.prj.notice.service.NoticeMapper">  <!-- 인터페이스명 써주기 -->
 	<select id="noticeSelectList"  resultType="co.ppp.prj.notice.vo.NoticeVO">
-		select * from notice
+		select a.*, b.name from notice a, member b 
+		where a.writer= b.id
+		order by a.id desc
 	</select>
 	
 	<select id="noticeSelect" resultType="co.ppp.prj.notice.vo.NoticeVO">
-	
+		select a.*, b.name from notice a, member b 
+		where a.writer= b.id and a.id = #{id}
 	</select>
 	
 	<insert id="noticeInsert" parameterType="co.ppp.prj.notice.vo.NoticeVO">
-	
+		insert into notice(id,writer,writedate,title,contents)
+		values(n_id.nextval, #{writer}, #{writeDate}, #{title}, #{contents})
 	</insert>
 	
 	<update id="noticeUpdate" parameterType="co.ppp.prj.notice.vo.NoticeVO">
-	
+		update notice set title=#{title} , contents=#{contents}
+		where id =#{id}
 	</update>
 	
 	<delete id="noticeDelete" parameterType="co.ppp.prj.notice.vo.NoticeVO">
-	
+		delete from notice 
+		where id= #{id}
 	</delete>
 </mapper>
