@@ -37,7 +37,7 @@ public class MemberController {
 	@RequestMapping("/loginForm.do")  //로그인 화면 띄우기
 	public String loginForm(Model model) {
 		
-		return "member/loginForm";
+		return "notiles/loginForm";
 	}
 	
 	@RequestMapping("/login.do")   //로그인 하기
@@ -60,10 +60,10 @@ public class MemberController {
 		return views;
 	}
 	
-	@RequestMapping("/JoinForm.do")  
+	@RequestMapping("/joinForm.do")  
 	String JoinForm() {  
 		
-		return "member/JoinForm";
+		return "member/joinForm";
 	}
 	
 //	@PostMapping("/memberJoin.do")    //회원가입

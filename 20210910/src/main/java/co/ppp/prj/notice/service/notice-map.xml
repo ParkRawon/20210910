@@ -13,7 +13,7 @@
 	</select>
 	
 	<insert id="noticeInsert" parameterType="co.ppp.prj.notice.vo.NoticeVO">
-		insert into notice(id,writer,writedate,title,contents)
+		insert into notice(id,writer, writedate, title,contents)
 		values(n_id.nextval, #{writer}, #{writeDate}, #{title}, #{contents})
 	</insert>
 	

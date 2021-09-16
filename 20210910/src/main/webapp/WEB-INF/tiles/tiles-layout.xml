@@ -5,7 +5,8 @@
 
 <tiles-definitions>
 		<!-- 전체 레이아웃 -->  <!-- 미리설계하고 layout을 만든다 -->
-	 <definition name="layout" template="/WEB-INF/views/tiles/layout.jsp">   
+	 <definition name="layout" template="/WEB-INF/views/tiles/layout.jsp">  
+	 	<put-attribute name="sidebar" value="/WEB-INF/views/tiles/sidebar.jsp" /> 
 	 	<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
 	 	<put-attribute name="body" value="" />
 	 	<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />  

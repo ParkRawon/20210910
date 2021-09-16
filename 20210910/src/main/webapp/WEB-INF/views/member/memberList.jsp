@@ -40,7 +40,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 			</table>
 		</div><br/>
 		<div>
-			<button type="button" onclick="location.href='home.do'">홈가기</button>
+			<input type="button" onclick="location.href='home.do'" value="HOME">
 		</div>
 		<div>
 			<form id="frm" name="frm" action="memberSelect.do" method="post">
